@@ -822,6 +822,8 @@
             display: flex;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
+            will-change: transform;
+            backface-visibility: hidden;
         }
 
         .wish-slide {
@@ -842,6 +844,9 @@
             margin-bottom: 2rem;
             position: relative;
             padding-left: 2rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .wish-quote::before {
@@ -867,6 +872,8 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--primary);
+            background-color: rgba(255, 255, 255, 0.1);
+            image-rendering: -webkit-optimize-contrast;
         }
 
         .author-info h4 {
@@ -898,6 +905,25 @@
         .slider-dot.active {
             background: var(--primary);
             transform: scale(1.3);
+        }
+
+        /* Mobile slider arrows */
+        .slider-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .slider-arrow:hover {
+            background: var(--primary);
         }
 
         /* ========== SURPRISE SECTION ========== */
@@ -1228,6 +1254,20 @@
             transform: rotate(90deg);
         }
 
+        /* Cake Image Styles */
+        .cake-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .cake-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            animation: float 6s ease-in-out infinite;
+        }
+
         /* ========== 3D ELEMENTS ========== */
         .three-container {
             position: absolute;
@@ -1347,6 +1387,76 @@
                 left: 1rem;
                 justify-content: space-between;
             }
+            
+            /* Wishes section mobile fix */
+            .wishes-slider {
+                height: 600px;
+            }
+            
+            .wish-slide {
+                padding: 2rem 1.5rem;
+                min-height: 500px;
+            }
+            
+            .wish-quote {
+                font-size: 1.4rem !important;
+                line-height: 1.6 !important;
+                padding-left: 1rem !important;
+                margin-bottom: 2.5rem !important;
+            }
+            
+            .wish-quote::before {
+                font-size: 3rem !important;
+                top: -0.5rem !important;
+                left: 0 !important;
+            }
+            
+            .wish-author {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 1rem !important;
+                margin-top: auto !important;
+            }
+            
+            .author-avatar {
+                width: 80px !important;
+                height: 80px !important;
+                margin: 0 auto !important;
+            }
+            
+            .author-info {
+                text-align: center !important;
+            }
+            
+            .author-info h4 {
+                font-size: 1.3rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            
+            .author-info p {
+                font-size: 1rem !important;
+            }
+            
+            .slider-controls {
+                margin-top: 1.5rem !important;
+            }
+            
+            .slider-arrow {
+                display: flex;
+            }
+            
+            .slider-controls {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .slider-dots {
+                display: flex;
+                gap: 0.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1369,6 +1479,30 @@
             
             .modal-content {
                 padding: 2rem 1rem;
+            }
+            
+            .wishes-slider {
+                height: 650px;
+            }
+            
+            .wish-slide {
+                padding: 2rem 1rem;
+            }
+            
+            .wish-quote {
+                font-size: 1.2rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            .wish-quote::before {
+                font-size: 2.5rem !important;
+                top: -0.3rem !important;
+            }
+            
+            .author-avatar {
+                width: 70px !important;
+                height: 70px !important;
             }
         }
 
@@ -1495,7 +1629,7 @@
     <!-- Navigation -->
     <nav class="main-nav" id="mainNav">
         <div class="logo">
-                        <i class="fas fa-crown"></i> Birthday Queen
+            <i class="fas fa-crown"></i> Birthday Queen
         </div>
         <div class="nav-links">
             <a href="#hero" class="nav-link">Home</a>
@@ -1567,7 +1701,7 @@
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <div class="stat-number" id="yearsTogether">5</div>
+                            <div class="stat-number" id="yearsTogether">1</div>
                             <div class="stat-label">Years Together</div>
                         </div>
                         <div class="stat-item">
@@ -1623,26 +1757,26 @@
                 </div>
                 <div class="memories-grid">
                     <div class="memory-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="First Meeting" class="memory-image">
+                        <img src="meet.png" alt="First Meeting" class="memory-image">
                         <div class="memory-content">
                             <div class="memory-date">
-                                <i class="far fa-calendar"></i> June 15, 2019
+                                <i class="far fa-calendar"></i> June 5, 2024
                             </div>
                             <h3 class="memory-title">The Day We Met</h3>
-                            <p class="memory-description">The moment my world changed forever. I knew from that first smile that you were someone special.</p>
+                            <p class="memory-description">The moment my world changed forever. I thanks ALLAH for sending you in my life.</p>
                         </div>
                     </div>
                     <div class="memory-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="First Vacation" class="memory-image">
+                        <img src="adven.png" alt="First moment" class="memory-image">
                         <div class="memory-content">
                             <div class="memory-date">
-                                <i class="far fa-calendar"></i> August 2020
+                                <i class="far fa-calendar"></i> June 23, 2024
                             </div>
-                            <h3 class="memory-title">Our First Adventure</h3>
-                            <p class="memory-description">Exploring new places with you by my side made every moment magical. Your excitement was contagious.</p>
+                            <h3 class="memory-title">Our First Real Moment</h3>
+                            <p class="memory-description">You come to bidar. That moment was unforgettable.</p>
                         </div>
                     </div>
-                    <div class="memory-card" data-aos="fade-up" data-aos-delay="300">
+                    <!-- <div class="memory-card" data-aos="fade-up" data-aos-delay="300">
                         <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Special Celebration" class="memory-image">
                         <div class="memory-content">
                             <div class="memory-date">
@@ -1651,7 +1785,7 @@
                             <h3 class="memory-title">Milestone Celebration</h3>
                             <p class="memory-description">Celebrating your achievements and watching you shine is one of my greatest joys.</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -1705,28 +1839,28 @@
                     </div>
                     <div class="gallery-grid">
                         <div class="gallery-item" data-category="smile" data-aos="zoom-in">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Beautiful Smile" class="gallery-img">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Beautiful Smile" class="gallery-img">
                             <div class="gallery-overlay">
                                 <h3 class="gallery-title">That Smile</h3>
                                 <p class="gallery-date">The one that lights up my world</p>
                             </div>
                         </div>
                         <div class="gallery-item" data-category="adventure" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Beach Day" class="gallery-img">
+                            <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Beach Day" class="gallery-img">
                             <div class="gallery-overlay">
                                 <h3 class="gallery-title">Beach Days</h3>
                                 <p class="gallery-date">Sun, sand, and your laughter</p>
                             </div>
                         </div>
                         <div class="gallery-item" data-category="special" data-aos="zoom-in" data-aos-delay="200">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Evening Glow" class="gallery-img">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Evening Glow" class="gallery-img">
                             <div class="gallery-overlay">
                                 <h3 class="gallery-title">Golden Hour</h3>
                                 <p class="gallery-date">You glowing in the evening light</p>
                             </div>
                         </div>
                         <div class="gallery-item" data-category="smile" data-aos="zoom-in" data-aos-delay="300">
-                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Laughing" class="gallery-img">
+                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Laughing" class="gallery-img">
                             <div class="gallery-overlay">
                                 <h3 class="gallery-title">Pure Joy</h3>
                                 <p class="gallery-date">Your laughter is my favorite sound</p>
@@ -1738,62 +1872,89 @@
         </section>
 
         <!-- Wishes Section -->
-        <section id="wishes">
-            <div class="container">
-                <div class="wishes-container">
-                    <div class="wishes-header" data-aos="fade-up">
-                        <h2 class="section-title cursive">Heartfelt Wishes</h2>
-                        <p class="hero-subtitle">Messages from those who adore you</p>
-                    </div>
-                    <div class="wishes-slider" data-aos="fade-up" data-aos-delay="100">
-                        <div class="wishes-track" id="wishesTrack">
-                            <div class="wish-slide">
-                                <div class="wish-quote">
-                                    "To the most amazing woman I know - may your birthday be as wonderful as you are. You deserve all the happiness in the world!"
-                                </div>
-                                <div class="wish-author">
-                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Friend" class="author-avatar">
-                                    <div class="author-info">
-                                        <h4>Sarah Johnson</h4>
-                                        <p>Best Friend</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="wish-slide">
-                                <div class="wish-quote">
-                                    "Happy Birthday to the kindest soul I know! Your positivity and grace inspire everyone around you. Cheers to another fabulous year!"
-                                </div>
-                                <div class="wish-author">
-                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sister" class="author-avatar">
-                                    <div class="author-info">
-                                        <h4>Emily Chen</h4>
-                                        <p>Sister</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="wish-slide">
-                                <div class="wish-quote">
-                                    "Wishing the most incredible birthday to someone who makes the world a better place just by being in it. You're truly one of a kind!"
-                                </div>
-                                <div class="wish-author">
-                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Brother" class="author-avatar">
-                                    <div class="author-info">
-                                        <h4>Michael Roberts</h4>
-                                        <p>Brother</p>
-                                    </div>
-                                </div>
+               <section id="wishes">
+    <div class="container">
+        <div class="wishes-container">
+            <div class="wishes-header" data-aos="fade-up">
+                <h2 class="section-title cursive">Heartfelt Wishes</h2>
+                <p class="hero-subtitle">Messages from those who adore you</p>
+            </div>
+            <div class="wishes-slider" data-aos="fade-up" data-aos-delay="100">
+                <div class="wishes-track" id="wishesTrack">
+                    <!-- Wish 1 - Shabnam -->
+                    <div class="wish-slide">
+                        <div class="wish-quote">
+                            "To the most amazing girl I know - may your birthday be as wonderful as you are. You deserve all the happiness in the world!"
+                        </div>
+                        <div class="wish-author">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfl96a_vyo92pWmGpXazQsFv5g4Lf2IOhL2w&s" 
+                                 alt="Shabnam" 
+                                 class="author-avatar">
+                            <div class="author-info">
+                                <h4>Talath</h4>
+                                <p>Best Friend</p>
                             </div>
                         </div>
-                        <div class="slider-controls">
-                            <div class="slider-dot active" data-slide="0"></div>
-                            <div class="slider-dot" data-slide="1"></div>
-                            <div class="slider-dot" data-slide="2"></div>
+                    </div>
+                    
+                    <!-- Wish 2 - Aliya -->
+                    <div class="wish-slide">
+                        <div class="wish-quote">
+                            "Happy Birthday to the kindest soul I know! Your positivity and grace inspire everyone around you. Cheers to another fabulous year!"
+                        </div>
+                        <div class="wish-author">
+                            <img src="https://i.pinimg.com/736x/ac/aa/fa/acaafa228a368d536bef032ecaa93624.jpg" 
+                                 alt="Aliya" 
+                                 class="author-avatar">
+                            <div class="author-info">
+                                <h4>Zeenath</h4>
+                                <p>Best Friend</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wish 3 - Riya -->
+                    <div class="wish-slide">
+                        <div class="wish-quote">
+                            "Wishing you the happiest birthday ever! May all your dreams come true and this year be filled with beautiful moments and laughter."
+                        </div>
+                        <div class="wish-author">
+                            <img src="https://media.easy-peasy.ai/27feb2bb-aeb4-4a83-9fb6-8f3f2a15885e/aba65312-5356-41c6-8e66-cb58897d679c_medium.webp" 
+                                 alt="Riya" 
+                                 class="author-avatar">
+                            <div class="author-info">
+                                <h4>Shabnam</h4>
+                                <p>Best Friend</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wish 4 - Neha -->
+                    <div class="wish-slide">
+                        <div class="wish-quote">
+                            "Happy Birthday to the most beautiful soul! Your smile lights up every room you enter. Here's to an amazing year ahead!"
+                        </div>
+                        <div class="wish-author">
+                            <img src="https://resizeapi.com/resize-cgi/image/format=jpeg,fit=cover,width=1024,height=1536,quality=85/https://r2-us-west.photoai.com/1738514896-e864c3069bb6a97c497817f6259e4860-2.png" 
+                                 alt="Neha" 
+                                 class="author-avatar">
+                            <div class="author-info">
+                                <h4>Aliya</h4>
+                                <p>Best Friend</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="slider-controls">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                    <div class="slider-dot" data-slide="3"></div>
+                </div>
             </div>
-        </section>
-
+        </div>
+    </div>
+</section>
         <!-- Surprise Section -->
         <section id="surprise">
             <div class="container">
@@ -1887,7 +2048,7 @@
         </div>
     </footer>
 
-    <!-- Surprise Modal -->
+    <!-- Surprise Modal with Cake -->
     <div class="modal" id="surpriseModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModal">
@@ -1896,20 +2057,50 @@
             <div class="modal-body">
                 <div class="text-center">
                     <i class="fas fa-crown fa-4x text-gradient mb-3"></i>
-                    <h2 class="cursive mb-2">Your Royal Surprise!</h2>
+                    <h2 class="cursive mb-2">🎂 Your Royal Birthday Cake! 🎂</h2>
+                    
+                    <div class="cake-container">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Beautiful Birthday Cake" 
+                             class="cake-image">
+                    </div>
+                    
                     <div class="message-text mb-3">
                         <p>My Queen,</p>
-                        <p>As a special birthday gift, I've arranged a weekend getaway for us at that beautiful resort you've been dreaming of visiting!</p>
-                        <p>Pack your bags for:</p>
-                        <div class="countdown-unit mt-3 mb-3" style="max-width: 300px; margin: 0 auto;">
-                            <div class="countdown-number">3</div>
-                            <div class="countdown-label">Days of Luxury & Relaxation</div>
+                        <p>I present to you the most beautiful cake, just like you! This isn't just any cake - it's baked with:</p>
+                        
+                        <div class="message-quote" style="margin: 1.5rem 0;">
+                            <p><i class="fas fa-heart text-gradient"></i> Layers of Love<br>
+                            <i class="fas fa-star text-gradient"></i> Sprinkles of Joy<br>
+                            <i class="fas fa-gem text-gradient"></i> Icing of Admiration<br>
+                            <i class="fas fa-music text-gradient"></i> Melody of Sweet Memories</p>
                         </div>
-                        <p>We leave next Friday! This is just a small token of how much you mean to me.</p>
+                        
+                        <p>But wait, there's more! Your actual birthday surprise is...</p>
+                        
+                        <div class="countdown-unit mt-3 mb-3" style="max-width: 300px; margin: 1.5rem auto;">
+                            <div class="countdown-number">24</div>
+                            <div class="countdown-label">Hours of Pure Celebration</div>
+                        </div>
+                        
+                        <p>I've planned a full day of surprises starting tomorrow:</p>
+                        <ul style="text-align: left; margin: 1rem 0;">
+                            <li>🌅 Sunrise breakfast at your favorite spot</li>
+                            <li>🎨 Art class together (you've been wanting to try!)</li>
+                            <li>🍽️ Dinner at that fancy restaurant you love</li>
+                            <li>🎁 A special gift that will make you smile</li>
+                        </ul>
+                        
+                        <p class="mt-2">This cake is just the beginning of celebrating YOU!</p>
                     </div>
-                    <button class="btn btn-primary">
+                    
+                    <button class="btn btn-primary" id="markCalendar">
                         <i class="fas fa-calendar-check"></i> Mark Your Calendar!
                     </button>
+                    
+                    <div class="mt-3 opacity-70">
+                        <small><i class="fas fa-heart"></i> PS: Blow out the candles and make a wish!</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2043,27 +2234,36 @@
                 lastScroll = currentScroll;
             });
 
-            // Countdown Timer
-            function updateCountdown() {
-                // Set birthday date (example: next birthday)
-                const now = new Date();
-                const birthday = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-                
-                const diff = birthday - now;
-                
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                document.getElementById('countdown-days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
-            }
-            
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
+          // Countdown Timer for 4th January 2026
+function updateCountdown() {
+    // Set birthday date to 4th January 2026
+    const now = new Date();
+    const birthday = new Date(2026, 0, 4); // January is 0 in JavaScript
+    
+    const diff = birthday - now;
+    
+    // If birthday has passed
+    if (diff <= 0) {
+        document.getElementById('countdown-days').textContent = '00';
+        document.getElementById('countdown-hours').textContent = '00';
+        document.getElementById('countdown-minutes').textContent = '00';
+        document.getElementById('countdown-seconds').textContent = '00';
+        return; // Yeh return statement add karein
+    }
+    
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    document.getElementById('countdown-days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
             // Music Player
             const musicPlayer = document.getElementById('musicPlayer');
@@ -2074,6 +2274,7 @@
             const volumeSlider = document.getElementById('volumeSlider');
             const musicToggle = document.getElementById('musicToggle');
             
+            // Use Howler.js for better audio handling
             const playlist = [
                 { title: "Birthday Love", artist: "For My Queen", src: "https://assets.mixkit.co/music/preview/mixkit-happy-birthday-508.mp3" },
                 { title: "You Are My Sunshine", artist: "Special Version", src: "https://assets.mixkit.co/music/preview/mixkit-sunny-day-522.mp3" },
@@ -2082,7 +2283,19 @@
             
             let currentTrack = 0;
             let isPlaying = false;
-            let audio = new Audio(playlist[currentTrack].src);
+            
+            // Initialize Howler.js
+            let sound = new Howl({
+                src: [playlist[currentTrack].src],
+                volume: volumeSlider.value,
+                html5: true,
+                onplay: function() {
+                    requestAnimationFrame(updateProgress);
+                },
+                onend: function() {
+                    playNext();
+                }
+            });
             
             function updatePlayerInfo() {
                 document.getElementById('songTitle').textContent = playlist[currentTrack].title;
@@ -2090,20 +2303,58 @@
             }
             
             function playTrack() {
-                audio.play();
+                if (!sound.playing()) {
+                    sound.play();
+                }
                 isPlaying = true;
                 playBtn.innerHTML = '<i class="fas fa-pause"></i>';
                 musicPlayer.classList.remove('player-hidden');
             }
             
             function pauseTrack() {
-                audio.pause();
+                sound.pause();
                 isPlaying = false;
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
             }
             
+            function playNext() {
+                sound.stop();
+                currentTrack = (currentTrack + 1) % playlist.length;
+                sound = new Howl({
+                    src: [playlist[currentTrack].src],
+                    volume: volumeSlider.value,
+                    html5: true,
+                    onplay: function() {
+                        requestAnimationFrame(updateProgress);
+                    },
+                    onend: function() {
+                        playNext();
+                    }
+                });
+                updatePlayerInfo();
+                if (isPlaying) sound.play();
+            }
+            
+            function playPrev() {
+                sound.stop();
+                currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+                sound = new Howl({
+                    src: [playlist[currentTrack].src],
+                    volume: volumeSlider.value,
+                    html5: true,
+                    onplay: function() {
+                        requestAnimationFrame(updateProgress);
+                    },
+                    onend: function() {
+                        playNext();
+                    }
+                });
+                updatePlayerInfo();
+                if (isPlaying) sound.play();
+            }
+            
             playBtn.addEventListener('click', () => {
-                if (isPlaying) {
+                if (sound.playing()) {
                     pauseTrack();
                 } else {
                     playTrack();
@@ -2111,32 +2362,30 @@
             });
             
             prevBtn.addEventListener('click', () => {
-                currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-                audio.src = playlist[currentTrack].src;
-                updatePlayerInfo();
-                if (isPlaying) playTrack();
+                playPrev();
             });
             
             nextBtn.addEventListener('click', () => {
-                currentTrack = (currentTrack + 1) % playlist.length;
-                audio.src = playlist[currentTrack].src;
-                updatePlayerInfo();
-                if (isPlaying) playTrack();
+                playNext();
             });
             
-            audio.addEventListener('timeupdate', () => {
-                const progress = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = progress + '%';
-            });
+            function updateProgress() {
+                if (sound.playing()) {
+                    const seek = sound.seek() || 0;
+                    const progress = (seek / sound.duration()) * 100;
+                    progressBar.style.width = progress + '%';
+                    requestAnimationFrame(updateProgress);
+                }
+            }
             
             volumeSlider.addEventListener('input', (e) => {
-                audio.volume = e.target.value;
+                sound.volume(e.target.value);
             });
             
             musicToggle.addEventListener('click', () => {
                 if (musicPlayer.classList.contains('player-hidden')) {
                     musicPlayer.classList.remove('player-hidden');
-                    if (!isPlaying) playTrack();
+                    if (!sound.playing()) playTrack();
                 } else {
                     musicPlayer.classList.add('player-hidden');
                     pauseTrack();
@@ -2145,7 +2394,6 @@
             
             // Initialize player
             updatePlayerInfo();
-            audio.volume = volumeSlider.value;
 
             // Gallery Filter
             const filterButtons = document.querySelectorAll('.filter-btn');
@@ -2179,43 +2427,115 @@
             });
 
             // Wishes Slider
-            const wishesTrack = document.getElementById('wishesTrack');
-            const sliderDots = document.querySelectorAll('.slider-dot');
-            let currentSlide = 0;
-            
-            function showSlide(index) {
-                wishesTrack.style.transform = `translateX(-${index * 100}%)`;
+            function initWishesSlider() {
+                const wishesTrack = document.getElementById('wishesTrack');
+                const sliderDots = document.querySelectorAll('.slider-dot');
+                const prevArrow = document.querySelector('.slider-arrow.prev');
+                const nextArrow = document.querySelector('.slider-arrow.next');
+                let currentSlide = 0;
+                let autoSlideInterval;
                 
-                sliderDots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
+                function showSlide(index) {
+                    wishesTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    wishesTrack.style.transform = `translateX(-${index * 100}%)`;
+                    
+                    sliderDots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                    
+                    currentSlide = index;
+                }
+                
+                sliderDots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        showSlide(index);
+                        resetAutoSlide();
+                    });
                 });
                 
-                currentSlide = index;
+                if (prevArrow && nextArrow) {
+                    prevArrow.addEventListener('click', () => {
+                        currentSlide = (currentSlide - 1 + sliderDots.length) % sliderDots.length;
+                        showSlide(currentSlide);
+                        resetAutoSlide();
+                    });
+                    
+                    nextArrow.addEventListener('click', () => {
+                        currentSlide = (currentSlide + 1) % sliderDots.length;
+                        showSlide(currentSlide);
+                        resetAutoSlide();
+                    });
+                }
+                
+                // Touch/swipe support
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                wishesTrack.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    clearInterval(autoSlideInterval);
+                }, { passive: true });
+                
+                wishesTrack.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                    setTimeout(startAutoSlide, 3000);
+                }, { passive: true });
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    const diff = touchStartX - touchEndX;
+                    
+                    if (Math.abs(diff) > swipeThreshold) {
+                        if (diff > 0) {
+                            currentSlide = (currentSlide + 1) % sliderDots.length;
+                        } else {
+                            currentSlide = (currentSlide - 1 + sliderDots.length) % sliderDots.length;
+                        }
+                        showSlide(currentSlide);
+                    }
+                }
+                
+                function startAutoSlide() {
+                    autoSlideInterval = setInterval(() => {
+                        currentSlide = (currentSlide + 1) % sliderDots.length;
+                        showSlide(currentSlide);
+                    }, 5000);
+                }
+                
+                function resetAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                    startAutoSlide();
+                }
+                
+                // Start auto slide
+                startAutoSlide();
             }
             
-            sliderDots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showSlide(index);
-                });
-            });
-            
-            // Auto slide every 5 seconds
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % sliderDots.length;
-                showSlide(currentSlide);
-            }, 5000);
+            initWishesSlider();
 
-            // Surprise Modal
+            // Surprise Modal with Cake
             const revealBtn = document.getElementById('revealSurprise');
             const surpriseModal = document.getElementById('surpriseModal');
             const closeModal = document.getElementById('closeModal');
+            const markCalendarBtn = document.getElementById('markCalendar');
             
             revealBtn.addEventListener('click', () => {
                 surpriseModal.classList.add('active');
                 // Play celebration sound
-                const celebrationSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3');
-                celebrationSound.volume = 0.5;
+                const celebrationSound = new Howl({
+                    src: ['https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3'],
+                    volume: 0.5
+                });
                 celebrationSound.play();
+                
+                // Trigger confetti
+                createConfetti();
+            });
+            
+            markCalendarBtn.addEventListener('click', () => {
+                alert('📅 Birthday celebration scheduled! Check your calendar for tomorrow\'s surprises!');
+                surpriseModal.classList.remove('active');
             });
             
             closeModal.addEventListener('click', () => {
@@ -2236,8 +2556,10 @@
                 createConfetti();
                 
                 // Play party sound
-                const partySound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-party-horn-sound-2927.mp3');
-                partySound.volume = 0.3;
+                const partySound = new Howl({
+                    src: ['https://assets.mixkit.co/sfx/preview/mixkit-party-horn-sound-2927.mp3'],
+                    volume: 0.3
+                });
                 partySound.play();
             });
             
@@ -2297,11 +2619,10 @@
                 }
             });
 
-            // 3D Hearts (Simplified version)
+            // 3D Hearts
             function initHearts() {
                 const container = document.getElementById('hearts3d');
                 
-                // Create floating hearts
                 for (let i = 0; i < 20; i++) {
                     const heart = document.createElement('div');
                     heart.innerHTML = '<i class="fas fa-heart"></i>';
@@ -2322,7 +2643,7 @@
             
             initHearts();
 
-            // Smooth scrolling for anchor links
+            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2340,9 +2661,16 @@
                 });
             });
 
-            // Add animation to stats
+            // Animated stats
             const statNumbers = document.querySelectorAll('.stat-number');
             statNumbers.forEach(stat => {
+                if (stat.id === 'memoriesCount') {
+                    stat.textContent = '1000+';
+                    return;
+                }
+                
+                if (stat.textContent === '∞') return;
+                
                 const target = parseInt(stat.textContent);
                 let current = 0;
                 const increment = target / 100;
@@ -2352,64 +2680,23 @@
                         current = target;
                         clearInterval(timer);
                     }
-                    stat.textContent = Math.floor(current) + (stat.id === 'memoriesCount' ? '+' : '');
+                    stat.textContent = Math.floor(current).toString();
                 }, 20);
             });
+            
+
+            // Mobile touch fix for audio
+            document.body.addEventListener('touchstart', function initAudio() {
+                if (sound && !sound.playing()) {
+                    sound.play();
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    isPlaying = true;
+                }
+                document.body.removeEventListener('touchstart', initAudio);
+            }, { once: true });
         }
-let sound = new Howl({
-  src: ['bithday.mp3'],
-  volume: 0.7,
-  loop: true,
-  html5: true
-});
-
-const playBtn = document.getElementById('playBtn');
-const progressBar = document.getElementById('progressBar');
-const volumeSlider = document.getElementById('volumeSlider');
-
-let isPlaying = false;
-
-// PLAY / PAUSE
-playBtn.addEventListener('click', () => {
-  if (!isPlaying) {
-    sound.play();
-    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-  } else {
-    sound.pause();
-    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-  }
-  isPlaying = !isPlaying;
-});
-
-// VOLUME
-volumeSlider.addEventListener('input', e => {
-  sound.volume(e.target.value);
-});
-
-// PROGRESS BAR
-sound.on('play', () => {
-  requestAnimationFrame(updateProgress);
-});
-
-function updateProgress() {
-  if (sound.playing()) {
-    const seek = sound.seek() || 0;
-    const progress = (seek / sound.duration()) * 100;
-    progressBar.style.width = progress + '%';
-    requestAnimationFrame(updateProgress);
-  }
-}
-
-// MOBILE AUTOPLAY FIX (FIRST CLICK)
-document.body.addEventListener('click', () => {
-  if (!sound.playing()) {
-    sound.play();
-    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-    isPlaying = true;
-  }
-}, { once: true });
-
     </script>
     <audio id="bgMusic" src="birthday.mp3" preload="auto"></audio>
 </body>
 </html>
+<!-- 2260-2506 -->
