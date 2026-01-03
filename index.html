@@ -2356,6 +2356,62 @@
                 }, 20);
             });
         }
+        <script>
+let sound = new Howl({
+  src: ['bithday.mp3'],
+  volume: 0.7,
+  loop: true,
+  html5: true
+});
+
+const playBtn = document.getElementById('playBtn');
+const progressBar = document.getElementById('progressBar');
+const volumeSlider = document.getElementById('volumeSlider');
+
+let isPlaying = false;
+
+// PLAY / PAUSE
+playBtn.addEventListener('click', () => {
+  if (!isPlaying) {
+    sound.play();
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  } else {
+    sound.pause();
+    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+  }
+  isPlaying = !isPlaying;
+});
+
+// VOLUME
+volumeSlider.addEventListener('input', e => {
+  sound.volume(e.target.value);
+});
+
+// PROGRESS BAR
+sound.on('play', () => {
+  requestAnimationFrame(updateProgress);
+});
+
+function updateProgress() {
+  if (sound.playing()) {
+    const seek = sound.seek() || 0;
+    const progress = (seek / sound.duration()) * 100;
+    progressBar.style.width = progress + '%';
+    requestAnimationFrame(updateProgress);
+  }
+}
+
+// MOBILE AUTOPLAY FIX (FIRST CLICK)
+document.body.addEventListener('click', () => {
+  if (!sound.playing()) {
+    sound.play();
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    isPlaying = true;
+  }
+}, { once: true });
+</script>
+
     </script>
+    <audio id="bgMusic" src="birthday.mp3" preload="auto"></audio>
 </body>
 </html>
