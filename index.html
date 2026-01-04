@@ -1839,28 +1839,28 @@
                     </div>
                     <div class="gallery-grid">
                         <div class="gallery-item" data-category="smile" data-aos="zoom-in">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Beautiful Smile" class="gallery-img">
+                            <img src="smile.png" alt="Beautiful Smile" class="gallery-img">
                             <div class="gallery-overlay">
                                 <h3 class="gallery-title">That Smile</h3>
                                 <p class="gallery-date">The one that lights up my world</p>
                             </div>
                         </div>
                         <div class="gallery-item" data-category="adventure" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Beach Day" class="gallery-img">
+                            <img src="beach.png" alt="Beach Day" class="gallery-img">
                             <div class="gallery-overlay">
                                 <h3 class="gallery-title">Beach Days</h3>
                                 <p class="gallery-date">Sun, sand, and your laughter</p>
                             </div>
                         </div>
                         <div class="gallery-item" data-category="special" data-aos="zoom-in" data-aos-delay="200">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Evening Glow" class="gallery-img">
+                            <img src="golden.png" alt="Evening Glow" class="gallery-img">
                             <div class="gallery-overlay">
                                 <h3 class="gallery-title">Golden Hour</h3>
                                 <p class="gallery-date">You glowing in the evening light</p>
                             </div>
                         </div>
                         <div class="gallery-item" data-category="smile" data-aos="zoom-in" data-aos-delay="300">
-                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Laughing" class="gallery-img">
+                            <img src="joy.png" alt="Laughing" class="gallery-img">
                             <div class="gallery-overlay">
                                 <h3 class="gallery-title">Pure Joy</h3>
                                 <p class="gallery-date">Your laughter is my favorite sound</p>
@@ -2076,7 +2076,7 @@
                             <i class="fas fa-music text-gradient"></i> Melody of Sweet Memories</p>
                         </div>
                         
-                        <p>But wait, there's more! Your actual birthday surprise is...</p>
+                        <!-- <p>But wait, there's more! Your actual birthday surprise is...</p>
                         
                         <div class="countdown-unit mt-3 mb-3" style="max-width: 300px; margin: 1.5rem auto;">
                             <div class="countdown-number">24</div>
@@ -2090,7 +2090,7 @@
                             <li>🍽️ Dinner at that fancy restaurant you love</li>
                             <li>🎁 A special gift that will make you smile</li>
                         </ul>
-                        
+                         -->
                         <p class="mt-2">This cake is just the beginning of celebrating YOU!</p>
                     </div>
                     
@@ -2266,134 +2266,78 @@ setInterval(updateCountdown, 1000);
 updateCountdown();
 
             // Music Player
-            const musicPlayer = document.getElementById('musicPlayer');
-            const playBtn = document.getElementById('playBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const progressBar = document.getElementById('progressBar');
-            const volumeSlider = document.getElementById('volumeSlider');
-            const musicToggle = document.getElementById('musicToggle');
-            
-            // Use Howler.js for better audio handling
-            const playlist = [
-                { title: "Birthday Love", artist: "For My Queen", src: "https://pixabay.com/music/special-occasions-happy-birthday-357371/" },
-                { title: "You Are My Sunshine", artist: "Special Version", src: "https://assets.mixkit.co/music/preview/mixkit-sunny-day-522.mp3" },
-                { title: "Beautiful Moments", artist: "Memory Melody", src: "https://assets.mixkit.co/music/preview/mixkit-memories-604.mp3" }
-            ];
-            
-            let currentTrack = 0;
-            let isPlaying = false;
-            
-            // Initialize Howler.js
-            let sound = new Howl({
-                src: [playlist[currentTrack].src],
-                volume: volumeSlider.value,
-                html5: true,
-                onplay: function() {
-                    requestAnimationFrame(updateProgress);
-                },
-                onend: function() {
-                    playNext();
-                }
-            });
-            
-            function updatePlayerInfo() {
-                document.getElementById('songTitle').textContent = playlist[currentTrack].title;
-                document.getElementById('songArtist').textContent = playlist[currentTrack].artist;
-            }
-            
-            function playTrack() {
-                if (!sound.playing()) {
-                    sound.play();
-                }
-                isPlaying = true;
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                musicPlayer.classList.remove('player-hidden');
-            }
-            
-            function pauseTrack() {
-                sound.pause();
-                isPlaying = false;
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-            
-            function playNext() {
-                sound.stop();
-                currentTrack = (currentTrack + 1) % playlist.length;
-                sound = new Howl({
-                    src: [playlist[currentTrack].src],
-                    volume: volumeSlider.value,
-                    html5: true,
-                    onplay: function() {
-                        requestAnimationFrame(updateProgress);
-                    },
-                    onend: function() {
-                        playNext();
-                    }
-                });
-                updatePlayerInfo();
-                if (isPlaying) sound.play();
-            }
-            
-            function playPrev() {
-                sound.stop();
-                currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-                sound = new Howl({
-                    src: [playlist[currentTrack].src],
-                    volume: volumeSlider.value,
-                    html5: true,
-                    onplay: function() {
-                        requestAnimationFrame(updateProgress);
-                    },
-                    onend: function() {
-                        playNext();
-                    }
-                });
-                updatePlayerInfo();
-                if (isPlaying) sound.play();
-            }
-            
-            playBtn.addEventListener('click', () => {
-                if (sound.playing()) {
-                    pauseTrack();
-                } else {
-                    playTrack();
-                }
-            });
-            
-            prevBtn.addEventListener('click', () => {
-                playPrev();
-            });
-            
-            nextBtn.addEventListener('click', () => {
-                playNext();
-            });
-            
-            function updateProgress() {
-                if (sound.playing()) {
-                    const seek = sound.seek() || 0;
-                    const progress = (seek / sound.duration()) * 100;
-                    progressBar.style.width = progress + '%';
-                    requestAnimationFrame(updateProgress);
-                }
-            }
-            
-            volumeSlider.addEventListener('input', (e) => {
-                sound.volume(e.target.value);
-            });
-            
-            musicToggle.addEventListener('click', () => {
-                if (musicPlayer.classList.contains('player-hidden')) {
-                    musicPlayer.classList.remove('player-hidden');
-                    if (!sound.playing()) playTrack();
-                } else {
-                    musicPlayer.classList.add('player-hidden');
-                    pauseTrack();
-                }
-            });
-            
-            // Initialize player
-            updatePlayerInfo();
+// Music Player - Local Audio Version
+const musicPlayer = document.getElementById('musicPlayer');
+const playBtn = document.getElementById('playBtn');
+const progressBar = document.getElementById('progressBar');
+const volumeSlider = document.getElementById('volumeSlider');
+const musicToggle = document.getElementById('musicToggle');
+
+// Hide previous/next buttons since we only have one song
+document.getElementById('prevBtn').style.display = 'none';
+document.getElementById('nextBtn').style.display = 'none';
+
+// Local audio file - CHANGE 'birthday.mp3' TO YOUR ACTUAL FILE NAME
+let sound = new Howl({
+    src: ['bithday.mp3'], // ⬅️ Your local file name here
+    volume: 0.7,
+    loop: true,
+    html5: true,
+    onplay: function() {
+        requestAnimationFrame(updateProgress);
+    }
+});
+
+let isPlaying = false;
+
+// Play/Pause function
+playBtn.addEventListener('click', () => {
+    if (!isPlaying) {
+        sound.play();
+        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        isPlaying = true;
+        musicPlayer.classList.remove('player-hidden');
+    } else {
+        sound.pause();
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        isPlaying = false;
+    }
+});
+
+// Volume control
+volumeSlider.addEventListener('input', e => {
+    sound.volume(e.target.value);
+});
+
+// Progress bar update
+function updateProgress() {
+    if (sound.playing()) {
+        const seek = sound.seek() || 0;
+        const duration = sound.duration() || 1;
+        const progress = (seek / duration) * 100;
+        progressBar.style.width = progress + '%';
+        requestAnimationFrame(updateProgress);
+    }
+}
+
+// Music toggle button
+musicToggle.addEventListener('click', () => {
+    if (musicPlayer.classList.contains('player-hidden')) {
+        musicPlayer.classList.remove('player-hidden');
+    } else {
+        musicPlayer.classList.add('player-hidden');
+    }
+});
+
+// Mobile autoplay fix
+document.body.addEventListener('click', () => {
+    if (!sound.playing()) {
+        sound.play();
+        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        isPlaying = true;
+        musicPlayer.classList.remove('player-hidden');
+    }
+}, { once: true });
 
             // Gallery Filter
             const filterButtons = document.querySelectorAll('.filter-btn');
