@@ -2464,14 +2464,14 @@ document.body.addEventListener('click', () => {
             const closeModal = document.getElementById('closeModal');
             const markCalendarBtn = document.getElementById('markCalendar');
             
-            revealBtn.addEventListener('click', () => {
-                surpriseModal.classList.add('active');
-                // Play celebration sound
-                const celebrationSound = new Howl({
-                    src: ['https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3'],
-                    volume: 0.5
-                });
-                celebrationSound.play();
+            // revealBtn.addEventListener('click', () => {
+            //     surpriseModal.classList.add('active');
+            //     Play celebration sound
+            //     const celebrationSound = new Howl({
+            //         src: ['https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3'],
+            //         volume: 0.5
+            //     });
+            //     celebrationSound.play();
                 
                 // Trigger confetti
                 createConfetti();
