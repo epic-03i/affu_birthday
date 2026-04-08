@@ -2464,14 +2464,25 @@ document.body.addEventListener('click', () => {
             const closeModal = document.getElementById('closeModal');
             const markCalendarBtn = document.getElementById('markCalendar');
             
-            // revealBtn.addEventListener('click', () => {
+            // revealBtn.addEventListener('click', () => {                                                dsafhkashkfjshakf
             //     surpriseModal.classList.add('active');
-            //     Play celebration sound
-            //     const celebrationSound = new Howl({
-            //         src: ['https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3'],
-            //         volume: 0.5
-            //     });
-            //     celebrationSound.play();
+
+                        const unlockDate = new Date("2027-01-04 00:00:00"); // birthday time
+
+document.getElementById("revealSurprise").addEventListener("click", function () {
+    const now = new Date();
+
+    if (now >= unlockDate) {
+        document.getElementById("surpriseModal").classList.add("active");
+    } else {
+        alert("Surprise abhi locked hai 😏 wait karo...");
+    }
+                // Play celebration sound
+                const celebrationSound = new Howl({
+                    src: ['https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3'],
+                    volume: 0.5
+                });
+                celebrationSound.play();
                 
                 // Trigger confetti
                 createConfetti();
@@ -2586,19 +2597,7 @@ document.body.addEventListener('click', () => {
             }
             
             initHearts();
-//hello
-            const unlockDate = new Date("2027-01-04 00:00:00"); // birthday time
 
-document.getElementById("revealSurprise").addEventListener("click", function () {
-    const now = new Date();
-
-    if (now >= unlockDate) {
-        document.getElementById("surpriseModal").classList.add("active");
-    } else {
-        alert("Surprise abhi locked hai 😏 wait karo...");
-    }
-});
-//end
             // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
