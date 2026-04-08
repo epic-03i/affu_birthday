@@ -2586,7 +2586,19 @@ document.body.addEventListener('click', () => {
             }
             
             initHearts();
+//hello
+            const unlockDate = new Date("2027-01-04 00:00:00"); // birthday time
 
+document.getElementById("revealSurprise").addEventListener("click", function () {
+    const now = new Date();
+
+    if (now >= unlockDate) {
+        document.getElementById("surpriseModal").classList.add("active");
+    } else {
+        alert("Surprise abhi locked hai 😏 wait karo...");
+    }
+});
+//end
             // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
